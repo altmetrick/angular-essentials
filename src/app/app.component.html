@@ -1,0 +1,54 @@
+<app-header />
+
+<main>
+  <ul id="users">
+    <!--<li>      
+       6.2 You can handle your custom event (select) 
+       as regular event, and listen for its emit, and put 
+       handlers from parent component, and the handler will be called
+       with the $event object where you could find the emitted value (look 6.1)  
+      <app-user (select)="onSelectUser($event)" [user]="users[0]" />
+    </li> -->
+
+    <!-- 7. Use @for loop to render list of users -->
+    @for (user of users; track user.id){
+    <li>
+      <app-user
+        (select)="onSelectUser($event)"
+        [user]="user"
+        [selected]="selectedUser?.id === user.id"
+      />
+    </li>
+    }
+  </ul>
+
+  <!-- 8. use @if for conditional rendering  -->
+  @if(selectedUser){
+  <app-tasks [name]="selectedUser.name" [userId]="selectedUser.id" />
+  } @else {
+  <p id="fallback">Select a user to see their tasks</p>
+  }
+
+  <!-- //9. @if and @for are new angular template features
+  in older versions devs used directives like ngFor, ngIf -->
+  <!-- 9.0 instead of @for you could use @ngFor structural directive: 
+   - 9.1 Use this syntax inside an element: *ngFor="let user of users"
+   - 9.2 and don't forget to import in inside imports of your class component
+  -->
+  <!-- <ul id="users">
+    <li *ngFor="let user of users">
+      <app-user (select)="onSelectUser($event)" [user]="user" />
+    </li>
+  </ul> 
+  - 9.3 use ngIf directive
+   <element *ngIf=" condition; else fallback" />
+    -for else statement use ng-template element with #fallback prop:
+   <ng-template #fallback>
+    <p>Some element that needs to be rendered conditionally </p>
+   </ng-template>
+  
+  
+  -->
+</main>
+
+<app-footer />

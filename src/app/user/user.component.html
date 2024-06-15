@@ -1,0 +1,23 @@
+<app-card>
+  <!-- 10 conditionally add a class to an element by
+  [class.your_class_selector]="condition or boolean value" -->
+  <button [class.active]="selected" (click)="onSelectUser()">
+    <img [src]="imagePath" [alt]="user.name" />
+    <span>{{ user.name }}</span>
+  </button>
+</app-card>
+
+<!-- 3 add event listeners to elements by using: (event_name)="method()" -->
+<!-- <button (click)="onSelectUser()"> -->
+<!-- 1.2 or accessing properties by property bind syntax : [tab]='publicProperty.property'-->
+<!-- 2.1 access value of getter imagePath -->
+
+<!-- <img [src]="imagePath" [alt]="selectedUser.name" /> -->
+
+<!-- 1.1 accessing public properties of a class by string interpolation with {{}} -->
+<!-- <span>{{ selectedUser.name }}</span> -->
+
+<!-- 4.3 Access value of signal -->
+<!-- <img [src]="imagePath()" [alt]="selectedUser().name" />
+    <span>{{ selectedUser().name }}</span> -->
+<!-- </button> -->
